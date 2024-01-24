@@ -12,16 +12,16 @@ $index_name = 'les films de la semaine';
 $films_name = 'Tous les films à l\'affiche';
 $contact_name = 'Contactez vous';
 
-$current_url = $_SERVER['SCRIPT_NAME']
+$current_url = $_SERVER['SCRIPT_NAME'];
 
 
-// if (strpos($index_page, $current_url) !== FALSE || strpos($index_page . 'index.php',$current_url) !== FALSE):
-//   $title = $index_name;
-//   elseif (strpos($films_page, $current_url) !== FALSE):
-//     $title = $films_name;
-//  elseif (strpos($contact_page, $current_url)  !== FALSE):
-//   $title = $contact_name;
-//   endif;
+if (strpos($index_page, $current_url) !== FALSE || strpos($index_page . 'index.php',$current_url) !== FALSE):
+  $title = $index_name;
+  elseif (strpos($films_page, $current_url) !== FALSE):
+    $title = $films_name;
+ elseif (strpos($contact_page, $current_url)  !== FALSE):
+  $title = $contact_name;
+  endif;
 
 ?>
 
@@ -46,7 +46,7 @@ $current_url = $_SERVER['SCRIPT_NAME']
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container px-4 px-lg-5">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="<?= $index_page;?>">
       <img src="/assets/img/logo.png" alt="Logo" width="50" height="50" class="d-inline-block">
       Cinema Utopia</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -54,8 +54,8 @@ $current_url = $_SERVER['SCRIPT_NAME']
         class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4 col-12 justify-content-end">
-        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Accueil</a></li>
-        <li class="nav-item"><a class="nav-link" href="/">Les Films</a></li>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="<?= $index_page;?>">Accueil</a></li>
+        <li class="nav-item"><a class="nav-link" href="<?= $films_page;?>">Les Films</a></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">Contact</a>
