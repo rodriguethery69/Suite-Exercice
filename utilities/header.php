@@ -1,19 +1,24 @@
 <?php
 require dirname(__DIR__) . ('/config/config.php');
 require dirname(__DIR__) . ('/function/database.fn.php');
+require dirname(__DIR__) . ('/function/movies.fn.php');
+
 $db = getPDOlink($config);
+
+
 
 $domain = '/';
 $index_page = $domain;
 $films_page = $domain . 'films.php';
 $contact_page = $domain . 'contact.php';
+$film_page = $domain . 'mapage.php';
 
 $index_name = 'les films de la semaine';
 $films_name = 'Tous les films à l\'affiche';
 $contact_name = 'Contactez vous';
 
 $current_url = $_SERVER['SCRIPT_NAME'];
-
+var_dump($current_url);
 
 if (strpos($index_page, $current_url) !== FALSE || strpos($index_page . 'index.php',$current_url) !== FALSE):
   $title = $index_name;
@@ -21,7 +26,10 @@ if (strpos($index_page, $current_url) !== FALSE || strpos($index_page . 'index.p
     $title = $films_name;
  elseif (strpos($contact_page, $current_url)  !== FALSE):
   $title = $contact_name;
-  endif;
+elseif (strpos($film_page, $current_url)!== FALSE):
+  $film = findMovieById($db, $_GET['id']);
+  $title = $film['title'];
+  endif; 
 
 ?>
 
@@ -78,7 +86,7 @@ if (strpos($index_page, $current_url) !== FALSE || strpos($index_page . 'index.p
     <img src="/assets/img/affiche.jpg" alt="image de background"
       class="position-absolute top-50 start-50 translate-middle h-100 w-100">
     <div class="text-center text-warning-emphasis position-absolute align-items-center top-50 start-50 translate-middle">
-      <h1 class="display-4 fw-bolder">Shop in style</h1>
+      <h1 class="display-4 fw-bolder"><?= isset($title) ? $title : 'Mon titre par défaut'; ?></h1>
       <p class="lead fw-normal text-warning-emphasis-50 mb-0">With this shop hompeage template</p>
     </div>
   </div>

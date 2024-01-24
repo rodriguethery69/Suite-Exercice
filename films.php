@@ -1,6 +1,5 @@
 <?php 
 require __DIR__ . ('/utilities/header.php'); 
-require __DIR__ . ('/function/movies.fn.php');
 ?>
 
   <h1>Les films Utopia</h1>

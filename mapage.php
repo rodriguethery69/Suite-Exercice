@@ -1,10 +1,6 @@
 <?php 
     require __DIR__ . ('/utilities/header.php');
-    require __DIR__ . ('/function/movies.fn.php');
-
-    $film = findMovieById($db, $_GET['id']);
-
-
+    
 ?>
 
 <h1>Detail du film</h1>
