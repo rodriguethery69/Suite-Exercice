@@ -1,9 +1,28 @@
 <?php 
-    require __DIR__ . ('/utilities/header.php');
+    require_once __DIR__ . ('/config/config.php');
+    require_once __DIR__ . ('/function/database.fn.php');
+    $db = getPDOlink($config);
+
+    require_once __DIR__ . ('/function/movies.fn.php');
+    $film = findMovieByID($db, $_GET['id']);
+    $title = $film['title'];
+    $picture = findPictureByMovie($db,$_GET['id']);
+    $path2 = $picture['pathImg'];
     
+
+  require_once __DIR__ . ('/utilities/header.php');
+
+if(isset($_GET['ID']) || empty($film['id'])) {
+  header("Location: /");
+} else{
+  $title = '' . $film['title'];
+}
+ $picture = findPictureByMovie($db,$_GET['id']);
+ $path = $picture['pathImg'];
 ?>
 
 <h1>Detail du film</h1>
+<!-- <img src="<?=$path?>" alt="photo-film"> -->
   <h2><?= $film['title'] ?></h2>
   <p>année de réalisation : <?= $film['year_released'] ?></p>
   <p>par : <?= $film['director'] ?></p>
