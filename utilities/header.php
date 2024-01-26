@@ -1,40 +1,9 @@
 <?php
-require_once dirname (__DIR__) . ('/config/config.php');
-require_once dirname (__DIR__) . ('/function/database.fn.php');
-
-
+require_once dirname(__DIR__) . ('/config/config.php');
+require_once dirname(__DIR__) . ('/function/database.fn.php');
 $db = getPDOlink($config);
-
-
-
-$domain = '/';
-$index_page = $domain;
-$films_page = $domain . 'films.php';
-$contact_page = $domain . 'contact.php';
-$film_page = $domain . 'mapage.php';
-
-$index_name = 'les films de la semaine';
-$films_name = 'Tous les films à l\'affiche';
-$contact_name = 'Contactez vous';
-
-
-$current_url = $_SERVER['SCRIPT_NAME'];
-// var_dump($current_url);
-
-if (strpos($index_page, $current_url) !== FALSE || strpos($index_page . 'index.php',$current_url) !== FALSE):
-  $title = $index_name;
-  elseif (strpos($films_page, $current_url) !== FALSE):
-    $title = $films_name;
- elseif (strpos($contact_page, $current_url)  !== FALSE):
-  $title = $contact_name;
-  endif; 
-  if (strpos($index_page, $current_url) !== FALSE || strpos($index_page . 'index.php',$current_url) !== FALSE):
-    $path2 = '/assets/img/affiche.jpg';
-    elseif (strpos($films_page, $current_url) !== FALSE):
-      $path2 = '/assets/img/affiche.jpg';
-   elseif (strpos($contact_page, $current_url)  !== FALSE):
-    $path2 = '/assets/img/affiche.jpg';
-    endif; 
+require_once dirname(__DIR__) . ('/config/headerConfig.php');
+require_once dirname(__DIR__) . ('/function/header.fn.php');
 
 ?>
 
@@ -60,7 +29,7 @@ if (strpos($index_page, $current_url) !== FALSE || strpos($index_page . 'index.p
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container px-4 px-lg-5">
-    <a class="navbar-brand" href="<?= $index_page;?>">
+    <a class="navbar-brand" href="<?= $index_page; ?>">
       <img src="/assets/img/logo.png" alt="Logo" width="50" height="50" class="d-inline-block">
       Cinema Utopia</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -68,10 +37,11 @@ if (strpos($index_page, $current_url) !== FALSE || strpos($index_page . 'index.p
         class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4 col-12 justify-content-end">
-        <li class="nav-item"><a class="nav-link active" aria-current="page" href="<?= $index_page;?>">Accueil</a></li>
-        <li class="nav-item"><a class="nav-link" href="<?= $films_page;?>">Les Films</a></li>
+        <li class="nav-item"><a class="nav-link <?=activelink($index_page ,$current_url)?><?=activelink('/index.php' ,$current_url)?>" 
+        aria-current="page" href="<?= $index_page; ?>">Accueil</a></li>
+        <li class="nav-item"><a class="nav-link <?=activelink($films_page ,$current_url)?>" href="<?= $films_page; ?>">Les Films</a></li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+          <a class="nav-link dropdown-toggle <?=activelink($contact_page ,$current_url)?>" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
             aria-expanded="false">Contact</a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="#!">Tous les Cinemas</a></li>
@@ -84,18 +54,19 @@ if (strpos($index_page, $current_url) !== FALSE || strpos($index_page . 'index.p
       </ul>
     </div>
   </div>
-
 </nav>
 <!-- Header-->
 <header class="overflow-hidden" style="height: 500px;">
   <div class="container-fluid px-4 px-lg-5 position-relative h-100">
-    <img src="<?=$path2?>" alt="image de background"
+    <img src="<?= $path2 ?>" alt="image de background"
       class="position-absolute top-50 start-50 translate-middle h-100 w-100">
-    <div class="text-center text-warning-emphasis position-absolute align-items-center top-50 start-50 translate-middle">
-      <h1 class="display-4 fw-bolder"><?=$title?></h1>
+    <div
+      class="text-center text-warning-emphasis position-absolute align-items-center top-50 start-50 translate-middle">
+      <h1 class="display-4 fw-bolder">
+        <?= $title ?>
+      </h1>
       <p class="lead fw-normal text-warning-emphasis-50 mb-0">With this shop hompeage template</p>
     </div>
   </div>
 </header>
-
 <body>

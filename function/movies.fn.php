@@ -59,3 +59,40 @@ function findPictureByMovie($db, $currentId){
     return $picture;
 }
 
+
+// Fonction pour récupérer tous les films de la base de données
+function findBestMovies($db, $limit) { 
+  // Requête SQL pour sélectionner tous les champs de la table 'movies'
+  $sql = "SELECT * FROM `movies` ORDER BY `rating` DESC LIMIT $limit;";
+
+  // Exécute la requête sur la base de données
+  $requete = $db->query($sql);
+
+  // Récupère tous les résultats de la requête
+  $result = $requete->fetchAll();
+
+  // Retourne le résultat
+  return $result;
+}
+
+function getStar($rating) {
+  $starRating = round(($rating));
+  $note = ($starRating/2);
+  $starSplit = explode('.',$note);
+  $starNum = 0;
+  
+  for ($i=0; $i<$starSplit[0] ; $i++) { 
+      echo'<i class="bi bi-star-fill"></i>';
+      $starNum++;
+  }
+  
+  if (isset($starSplit[1])) {
+      echo'<i class="bi bi-star-half"></i>';
+      $starNum++;
+  }
+  
+  for ($i=0; $i < (5-$starNum) ; $i++) { 
+      echo'<i class="bi bi-star"></i>';
+      $starNum++;
+  }
+  }

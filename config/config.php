@@ -5,7 +5,7 @@
     'dbhost' => 'localhost',
 
      // Nom de la base de données à laquelle nous voulons nous connecter
-    'dbname' => 'dbmovie_utopia',
+    'dbname' => 'utopia',
 
     // Port utilisé pour la connexion à la base de données
     'dbport' => '3306',
