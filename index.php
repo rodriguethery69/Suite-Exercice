@@ -3,6 +3,7 @@ require_once __DIR__ . ('/utilities/header.php');
 require_once __DIR__ . ('/function/movies.fn.php');
 require_once __DIR__ . ('/function/selectBest.fn.php');
 
+
 ?>
 <!-- En-tête principal indiquant le titre de la section -->
 <h1>Les Meilleurs Films Du Moment</h1>
@@ -40,8 +41,10 @@ require_once __DIR__ . ('/function/selectBest.fn.php');
 $films = findBestMovies($db, $limit);
 ?>
 
-  
-  <?php foreach ($films as $film) { ?>
+
+  <?php 
+
+  foreach ($films as $film) { ?>
     <div class="alert alert-primary" role="alert">
       <a href="mapage.php?id=<?= $film['id'] ?>"><?= $film['title'] ?></a>
   </div>   

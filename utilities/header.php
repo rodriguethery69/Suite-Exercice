@@ -61,9 +61,9 @@ require_once dirname(__DIR__) . ('/function/header.fn.php');
     <img src="<?= $path2 ?>" alt="image de background"
       class="position-absolute top-50 start-50 translate-middle h-100 w-100">
     <div
-      class="text-center text-warning-emphasis position-absolute align-items-center top-50 start-50 translate-middle">
+      class="text-center position-absolute align-items-center top-50 start-50 translate-middle bg-dark bg-opacity-50 text-white rounded-3">
       <h1 class="display-4 fw-bolder">
-        <?= $title ?>
+        <?= $title?>
       </h1>
       <p class="lead fw-normal text-warning-emphasis-50 mb-0">With this shop hompeage template</p>
     </div>

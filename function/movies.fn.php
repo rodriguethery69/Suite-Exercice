@@ -59,6 +59,21 @@ function findPictureByMovie($db, $currentId){
     return $picture;
 }
 
+function findAffichesByMovie($db, $currentId){
+
+    // Requête SQL pour récupérer les images associées à un film par ID
+  $sql = "SELECT * FROM `affiche` WHERE movieId =$currentId";
+
+// Exécute la requête sur la base de données
+  $requete = $db->query($sql);
+
+  // Récupère la première image associée au film
+  $affiches = $requete->fetch();
+
+  // Retourne l'image
+  return $affiches;
+}
+
 
 // Fonction pour récupérer tous les films de la base de données
 function findBestMovies($db, $limit) { 

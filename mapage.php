@@ -8,6 +8,8 @@
     $title = $film['title'];
     $picture = findPictureByMovie($db,$_GET['id']);
     $path2 = $picture['pathImg'];
+    $affiches = findAffichesByMovie($db,$_GET['id']);
+    $path3 = $affiches['pathAffiche'];
    
     
 
@@ -24,4 +26,5 @@ if(isset($_GET['ID']) || empty($film['id'])) {
 }
  $picture = findPictureByMovie($db,$_GET['id']);
  $path = $picture['pathImg'];
+
 
